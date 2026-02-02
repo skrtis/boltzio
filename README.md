@@ -1,6 +1,6 @@
 # BoltzIO
 
-A Python client and toolkit for [NVIDIA Boltz-2](https://build.nvidia.com/mit/boltz-2) protein structure prediction API, with utilities for protein-ligand complex modeling and structure post-processing.
+A Python client and toolkit for [NVIDIA Boltz-2](https://build.nvidia.com/mit/boltz2) protein structure prediction API, with utilities for protein-ligand complex modeling and structure post-processing.
 
 ## Features
 
