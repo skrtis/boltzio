@@ -1,0 +1,28 @@
+# env / venv
+.env
+.venv
+
+# python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+build/
+dist/
+.env
+
+# jupyter
+.ipynb_checkpoints/
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+
+# caches / reports
+.pytest_cache/
+.coverage
+*.log
+
+# generated outputs
+structures/

@@ -1,0 +1,52 @@
+# Template: protein + ligand prediction for Boltz-2
+# Fill in the fields below and save as e.g. inputs/myproject/20260131T123000_myrun.yaml
+# Do NOT include secrets (API keys) here — put them in .env or env vars.
+
+meta:
+  name: "my_protein_ligand_run"        # short descriptive name
+  author: "Your Name"
+  date: "2026-01-31"                   # optional, ISO date
+  notes: "Describe the purpose of this run"
+
+# Sequences: list each polymer or ligand as a mapping
+# - For proteins: use `protein` with optional `id`, `sequence`, `cyclic` (bool)
+# - For ligands: use `ligand` with `id` and either `smiles` or `ccd` (PDB Chemical Component ID)
+sequences:
+  - protein:
+      id: A
+      sequence: "INSERT_AMINO_ACID_SEQUENCE_HERE"
+      # cyclic: false   # optional
+
+  # Example ligand entry (choose one of smiles or ccd)
+  - ligand:
+      id: L1
+      smiles: "INSERT_LIGAND_SMILES_HERE"
+      # ccd: "ATP"     # alternative: use three-letter CCD code
+
+# Optional prediction parameters (these are model-specific defaults)
+# See documentation for parameter meanings and valid ranges.
+recycling_steps: 3
+sampling_steps: 50
+diffusion_samples: 1
+step_scale: 1.638
+without_potentials: false
+output_format: mmcif
+concatenate_msas: false
+
+
+# Affinity prediction specific options (if desired)
+# Affinity is automatically predicted when a ligand is present
+sampling_steps_affinity: 200
+diffusion_samples_affinity: 5
+affinity_mw_correction: false
+
+# Optional overrides: any additional Boltz-2 request keys can go here
+#overrides:
+#  custom_key: value
+
+# Example metadata for reproducibility (not used by client code)
+# provenance:
+#   source_fasta: path/to/source.fasta
+#   ligand_source: "ChEMBL/SMILES file"
+
+# End of template
