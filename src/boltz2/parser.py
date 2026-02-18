@@ -208,11 +208,15 @@ def split_structure_file(input_path: Path) -> Dict[str, Path]:
 
     generated: Dict[str, Path] = {}
 
-    # Write full mmCIF
-    mmcif_out = out_dir / f"{base}.mmcif"
-    with open(mmcif_out, "w", encoding="utf-8") as f:
-        f.write(mmcif_text)
-    generated["mmcif"] = mmcif_out
+    # Reuse existing mmCIF input file instead of writing another full mmCIF.
+    # When input is JSON (or other format), materialize the extracted mmCIF.
+    if input_path.suffix.lower() == ".mmcif":
+        generated["mmcif"] = input_path
+    else:
+        mmcif_out = out_dir / f"{base}.mmcif"
+        with open(mmcif_out, "w", encoding="utf-8") as f:
+            f.write(mmcif_text)
+        generated["mmcif"] = mmcif_out
 
     # Produce protein-only mmCIF (remove HETATM lines)
     lines = mmcif_text.splitlines()
